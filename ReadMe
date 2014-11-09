@@ -1,2 +1,6 @@
-code Reference: http://arduino.cc/en/Reference/HomePage
+1. code Reference: http://arduino.cc/en/Reference/HomePage
 
+2. 今天創造創造branch 當我加完以後 再回master 用rebase拉回master 想要放到想要放到server上卻出現錯誤
+[rejected]        master -> master (non-fast-forward).........................
+最後原來只要回master下git pull --rebase就解決了
+參考http://stackoverflow.com/questions/11696295/rejected-master-master-non-fast-forward
