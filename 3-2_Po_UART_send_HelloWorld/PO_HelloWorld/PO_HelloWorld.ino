@@ -1,3 +1,5 @@
+//查表可參考http://home.educities.edu.tw/wanker742126/asm/ap04.html
+
 void setup() {
 	Serial.begin(9600); 
 }
