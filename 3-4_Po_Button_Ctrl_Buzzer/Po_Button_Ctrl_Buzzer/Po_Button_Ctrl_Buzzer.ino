@@ -30,7 +30,7 @@ void scan_key(){
       if(digitalRead(Button) == LOW){//等待20s 後再判斷btn status
         Serial.print("is Low , Button click!!\n");
         click_btn = 1;//true
-        BuzzerDi();
+        Buzzer_frequency();
         while(digitalRead(Button) == LOW){//只有在Button為LOW的時候迴圈, 不是LOW就跳開
           Serial.print("is Low , Button is Long press!!\n");
           BuzzerDi();
@@ -42,9 +42,35 @@ void scan_key(){
 }
 
 void BuzzerDi(){
-  //if btn is click start buzzer 
+  //逼一聲
   digitalWrite(Buzzer, HIGH);
   delay(20);
   digitalWrite(Buzzer, LOW);
   //buzzer End
+}
+
+void Buzzer_frequency(){
+    //第一次逼聲
+    BuzzerDi();
+    delay(900);
+    BuzzerDi();
+    delay(900);
+    BuzzerDi();
+    delay(300);
+    BuzzerDi();
+    delay(300);
+    BuzzerDi();
+    delay(900);
+
+    //第二次逼聲
+    BuzzerDi();
+    delay(900);
+    BuzzerDi();
+    delay(900);
+    BuzzerDi();
+    delay(300);
+    BuzzerDi();
+    delay(300);
+    BuzzerDi();
+  
 }
