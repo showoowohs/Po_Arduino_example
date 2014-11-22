@@ -31,7 +31,10 @@ void scan_key(){
         Serial.print("is Low , Button click!!\n");
         click_btn = 1;//true
         BuzzerDi();
-        while(digitalRead(Button) == LOW);//只有在Button為LOW的時候迴圈, 不是LOW就跳開
+        while(digitalRead(Button) == LOW){//只有在Button為LOW的時候迴圈, 不是LOW就跳開
+          Serial.print("is Low , Button is Long press!!\n");
+          BuzzerDi();
+        }
       }
   }else{
     //Serial.print("is HIGH, not click!!\n");
