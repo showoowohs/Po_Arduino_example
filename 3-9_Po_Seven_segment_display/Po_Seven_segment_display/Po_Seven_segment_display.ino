@@ -1,44 +1,43 @@
-#define ADpin A2// select analog in A2, can use A0~A5
-#define LED 13
 
 
 void setup() { 
  //Initialize serial and wait for port to open:
   Serial.begin(9600);   
-  pinMode(LED, OUTPUT);
+
+  pinMode(2, OUTPUT); 
+
+  pinMode(3, OUTPUT);
+
+  pinMode(4, OUTPUT);
+
+  pinMode(5, OUTPUT);
+
+  pinMode(6, OUTPUT);
+
+  pinMode(7, OUTPUT);
+
+  pinMode(8, OUTPUT);
+
+  pinMode(9, OUTPUT);
+
+
 } 
 
 void loop() { 
-  int ADpin_buffer =0;
-  ADpin_buffer = analogRead(ADpin);//0~1023
-  Serial.print("ADpin_buffer = ");     
-  Serial.println(ADpin_buffer);   
+ digitalWrite(2, 1);
+
+  digitalWrite(3, 1);
+
   
-  Po_check_CdS(ADpin_buffer);
+  delay(1000);
+  //Serial.print("ADpin_buffer = ");     
+  Serial.println("...");   
+  
+  digitalWrite(2, 0);
 
-  delay(500);
+  digitalWrite(3, 0);
+  delay(1000);
+  //delay(500);
 }
 
-void Po_check_CdS(int CdS_val){
-  int val = CdS_val;
-  if(val > 800){
-    digitalWrite(LED, LOW);
-    Serial.println("CdS_val > 800"); 
-  }else{
-    
-    if(val < 700){
-      digitalWrite(LED, LOW);
 
-      delay(800);
-      digitalWrite(LED, HIGH);
-      delay(800);
-      digitalWrite(LED, LOW);
-      delay(800);
-      digitalWrite(LED, HIGH);
-      Serial.println("CdS_val < 700"); 
-    }else{
-      digitalWrite(LED, HIGH);
-      Serial.println("CdS_val < 800"); 
-    }
-  }
-}
