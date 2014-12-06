@@ -21,14 +21,15 @@ void setup() {
 //////////////////////////////////////////////////////////////////////////////
 void loop(){
   if(count < countsperrev )
-    clockwise();
+    clockwise();//正轉
   else if (count == countsperrev * 2)
     count = 0;
   else
-    anticlockwise();
+    anticlockwise();//逆轉
   count++;
   Serial.print("count = ");
   Serial.println(count);
+  
 }
 
 //////////////////////////////////////////////////////////////////////////////
