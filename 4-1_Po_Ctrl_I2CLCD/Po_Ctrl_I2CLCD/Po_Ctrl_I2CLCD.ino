@@ -24,10 +24,18 @@ void loop()
   //指定print起始位置
   lcd.setCursor(0, 0);
   lcd.print("Mimi!!");
+  delay(1000);
   
   lcd.setCursor(0, 1);
   lcd.print("I Love You!!");
   delay(1000);
+  for(int i = 0 ; i < 16 ; i++){
+    lcd.clear();
+    lcd.setCursor(i, 1);
+    lcd.print("I Love You!!");
+    delay(300);
+  }
+  
 }
 
 
