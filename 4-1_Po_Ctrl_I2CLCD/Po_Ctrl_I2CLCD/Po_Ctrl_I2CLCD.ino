@@ -19,4 +19,15 @@ void setup()
 
 void loop()
 {
+  //清除LCD
+  lcd.clear();
+  //指定print起始位置
+  lcd.setCursor(0, 0);
+  lcd.print("Mimi!!");
+  
+  lcd.setCursor(0, 1);
+  lcd.print("I Love You!!");
+  delay(1000);
 }
+
+
