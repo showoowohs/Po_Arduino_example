@@ -1,0 +1,3 @@
+如果要將16x2 LiquidCrystal_I2C的library include進去
+1. 將LiquidCrystal_I2C1602V1.zip解開, uzip xxx.zip
+2. co LiquidCrystal_I2C1602V1 to .../arduino_IDE_path/libraries 
