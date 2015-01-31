@@ -6,15 +6,12 @@ decode_results results; // 儲存訊號的結構
 
 void setup()
 {
-  /*
-  Serial.begin(115200);
+  Serial.begin(9600);
   irrecv.blink13(true); // 設為true的話，當收到訊號時，腳位13的LED便會閃爍
   irrecv.enableIRIn(); // 啟動接收
-  */
 }
 
 void loop() {
-  /*
   if (irrecv.decode(&results)) { // 接收紅外線訊號並解碼
     Serial.print("results value is "); // 輸出解碼後的資料
     Serial.print(results.value, HEX);
@@ -24,5 +21,4 @@ void loop() {
     Serial.println(results.decode_type);
     irrecv.resume(); // 準備接收下一個訊號
   }
-  */
 }
