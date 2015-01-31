@@ -1,14 +1,4 @@
-//*******************************************************************************
-//----------------本例程仅供学习使用，未经作者允许，不得用于其他用途。-----------
-//------------------------版权所有，仿冒必究！-----------------------------------
-//----------------1.开发环境:Arduino IDE-----------------------------------------
-//----------------2.测试使用开发板型号：Arduino Leonardo or Arduino UNO R3-------
-//----------------3.单片机使用晶振：16M------------------------------------------
-//----------------4.淘宝网址：Ilovemcu.taobao.com--------------------------------
-//----------------------------52dpj.taobao.com-----------------------------------
-//----------------------------epic-mcu.taobao.com--------------------------------
-//----------------5.作者：神秘藏宝室---------------------------------------------
-//*******************************************************************************/
+
 #include "InfraredRemote.h"
 
 void setup() 
@@ -40,7 +30,8 @@ void Deal_Print()
 	}
 	else if( adrL_code == 0x44 )
 	{
-		Serial.println("TEST");			
+		//Serial.println("TEST");			
+                Serial.println("Left");
 	}
 	else if( adrL_code == 0x40 )
 	{
@@ -52,15 +43,18 @@ void Deal_Print()
 	}
 	else if( adrL_code == 0x07 )
 	{
-		Serial.println("Left");			
+		//Serial.println("Left");			
+                Serial.println("-");
 	}
 	else if( adrL_code == 0x15)
 	{
-		Serial.println("Play");			
+		//Serial.println("Play");			
+                Serial.println("+");
 	}
 	else if( adrL_code == 0x09 )
 	{
-		Serial.println("Right");			
+		//Serial.println("Right");			
+                Serial.println("EQ");
 	}
 	else if( adrL_code == 0x16)
 	{
@@ -68,11 +62,13 @@ void Deal_Print()
 	}
 	else if( adrL_code == 0x19)
 	{
-		Serial.println("-");			
+		//Serial.println("-");			
+                Serial.println("100+");
 	}
 	else if( adrL_code == 0x0d)
 	{
-		Serial.println("C");			
+		//Serial.println("C");			
+                Serial.println("200+");
 	}
 	else if( adrL_code == 0x0c)
 	{
