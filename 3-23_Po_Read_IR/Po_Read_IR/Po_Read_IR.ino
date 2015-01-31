@@ -18,7 +18,8 @@ void Deal_Print()
 {
 	if( adrL_code == 0x45 )
 	{
-		Serial.println("ON/OFF");			
+		//Serial.println("ON/OFF");			
+                Serial.println("CH-");
 	}
 	else if( adrL_code == 0x46)
 	{
@@ -26,7 +27,8 @@ void Deal_Print()
 	}
 	else if( adrL_code == 0x47 )
 	{
-		Serial.println("MENU");			
+		//Serial.println("MENU");			
+                Serial.println("CH+");
 	}
 	else if( adrL_code == 0x44 )
 	{
@@ -35,11 +37,13 @@ void Deal_Print()
 	}
 	else if( adrL_code == 0x40 )
 	{
-		Serial.println("+");			
+		//Serial.println("+");			
+                Serial.println("Right");
 	}
 	else if( adrL_code == 0x43 )
 	{
-		Serial.println("Return");			
+		//Serial.println("Return");
+                Serial.println("Play/Pasue");			
 	}
 	else if( adrL_code == 0x07 )
 	{
@@ -105,7 +109,9 @@ void Deal_Print()
 	else if( adrL_code == 0x4a)
 	{
 		Serial.println("9");			
-	}
+	}else{
+                Serial.println("other");
+        }
 
 	adrL_code = 0x00;
         adrH_code = 0x00;
