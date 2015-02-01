@@ -8,3 +8,5 @@
 4. 剛剛commit錯誤於是找到兩個方法 (a) git commit --amend, 但是他進的模式我實在不會操作所以放棄了  於是我用方法 (b) git reset HEAD^ --soft 的方式, 這個方式他會幫你回到你指定的commit 除此以外他會保留剛剛修改過的檔案, 所以透過方式b 我很輕鬆的就可以重新修正commit 名子了
 5. CdS是光敏電阻的意思
 6. 剛剛branch 取錯名子, 因此我就透過git checkout回master, 再透過git branch -m old-branch new-branch 的方式將branch 改名, 好險之前還沒push 上去, 改天在研究萬一先push上去要怎麼解決
+P.S 找到一個不錯的relay example, http://tech.yeesiang.com/control-real-devices-using-relay/
+
