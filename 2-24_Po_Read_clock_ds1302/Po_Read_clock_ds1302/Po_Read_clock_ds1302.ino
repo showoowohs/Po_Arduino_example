@@ -1,30 +1,74 @@
 
-#define led 13
-#define volume_pin A5
+//example reference http://quadpoint.org/projects/arduino-ds1302
+#include <stdio.h>
+#include <DS1302.h>
 
-int threshold = 500; //Change This
-int volume;
+#define LED13 13
 
-void setup() {                
-  Serial.begin(9600); // For debugging
-  pinMode(led, OUTPUT);     
+namespace {
+
+const int kCePin   = 5;  // Chip Enable
+const int kIoPin   = 6;  // Input/Output
+const int kSclkPin = 7;  // Serial Clock
+
+// Create a DS1302 object.
+DS1302 rtc(kCePin, kIoPin, kSclkPin);
+
+String dayAsString(const Time::Day day) {
+  switch (day) {
+    case Time::kSunday: return "Sunday";
+    case Time::kMonday: return "Monday";
+    case Time::kTuesday: return "Tuesday";
+    case Time::kWednesday: return "Wednesday";
+    case Time::kThursday: return "Thursday";
+    case Time::kFriday: return "Friday";
+    case Time::kSaturday: return "Saturday";
+  }
+  return "(unknown day)";
 }
 
-void loop() {
-  
-  volume = analogRead(volume_pin); // Reads the value from the Analog PIN A0
-  //volume = map(volume, 0, 1023, 0, 255);
-  
-  //Debug mode
-  Serial.println(volume);
-  delay(100);
-  
-  
-  if(volume>=threshold){
-    digitalWrite(led, HIGH); //Turn ON Led
-  }  
-  else{
-    digitalWrite(led, LOW); // Turn OFF Led
-  }
+void printTime() {
+  // Get the current time and date from the chip.
+  Time t = rtc.time();
 
+  // Name the day of the week.
+  const String day = dayAsString(t.day);
+
+  // Format the time and date and insert into the temporary buffer.
+  char buf[50];
+  snprintf(buf, sizeof(buf), "%s %04d-%02d-%02d %02d:%02d:%02d",
+           day.c_str(),
+           t.yr, t.mon, t.date,
+           t.hr, t.min, t.sec);
+
+  // Print the formatted string to serial so we can see the time.
+  Serial.println(buf);
+}
+
+}  // namespace
+
+void setup() {
+  pinMode(LED13, OUTPUT);
+  Serial.begin(9600);
+
+  // Initialize a new chip by turning off write protection and clearing the
+  // clock halt flag. These methods needn't always be called. See the DS1302
+  // datasheet for details.
+  rtc.writeProtect(false);
+  rtc.halt(false);
+
+  // Make a new time object to set the date and time.
+  // Wednesday, March 11, 2015 at 20:38:50.
+  Time t(2015, 3, 11, 20, 38, 50, Time::kWednesday);
+
+  // Set the time and date on the chip.
+  rtc.time(t);
+}
+
+// Loop and print the time every second.
+void loop() {
+  digitalWrite(LED13, LOW);
+  printTime();
+  delay(1000);
+  digitalWrite(LED13, HIGH);
 }
