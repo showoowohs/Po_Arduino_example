@@ -26,12 +26,12 @@ void loop() {
         //擺動
       break;
       case '4':
-        v = 0x524ADB;
-        //CH_Down
+        v = 0xFFE817;
+        //UP
       break;
       case '5':
-        v = 0x514AEB;
-        //Power
+        v = 0xFF6897;
+        //Down
       break;
       case '6':
         v = 0x77E11050;
