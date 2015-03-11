@@ -1,24 +1,48 @@
 #include "AIRremote.h"
 
-int RECV_PIN = 2; // 使用數位腳位2接收紅外線訊號
-IRrecv irrecv(RECV_PIN); // 初始化紅外線訊號輸入
-decode_results results; // 儲存訊號的結構
+IRsend irsend; // IRRemote限定使用數位腳位3
 
 void setup()
 {
   Serial.begin(9600);
-  irrecv.blink13(true); // 設為true的話，當收到訊號時，腳位13的LED便會閃爍
-  irrecv.enableIRIn(); // 啟動接收
+
 }
 
 void loop() {
-  if (irrecv.decode(&results)) { // 接收紅外線訊號並解碼
-    Serial.print("results value is "); // 輸出解碼後的資料
-    Serial.print(results.value, HEX);
-    Serial.print(", bits is ");
-    Serial.print(results.bits);
-    Serial.print(", decode_type is ");
-    Serial.println(results.decode_type);
-    irrecv.resume(); // 準備接收下一個訊號
+ int d;
+  if( (d = Serial.read()) != -1) { // 讀取序列埠
+    unsigned long v = 0x0;
+    switch(d){ // 根據讀取到的資料，換成代表六個按鍵的紅外線編碼
+      case '1':
+        v = 0xFF708F;
+        //Power
+      break;
+      case '2':
+        v = 0xFFF00F;
+        //Mode
+      break;
+      case '3':
+        v = 0xFF58A7;
+        //擺動
+      break;
+      case '4':
+        v = 0x524ADB;
+        //CH_Down
+      break;
+      case '5':
+        v = 0x514AEB;
+        //Power
+      break;
+      case '6':
+        v = 0x77E11050;
+      break;
+    }
+  if(v != 0x0){
+      Serial.print("read ");
+      Serial.print(d);
+      Serial.print(", IR send ");
+      Serial.println(v, HEX);
+      irsend.sendNEC(v, 32); // 輸出紅外線訊號
+    }
   }
 }
