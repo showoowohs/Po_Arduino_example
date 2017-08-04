@@ -2,6 +2,23 @@
 1. 將LiquidCrystal_I2C1602V1.zip解開, uzip xxx.zip
 2. copy LiquidCrystal_I2C1602V1 to .../arduino_IDE_path/libraries 
 
-Refer:
+--------------- I2C_LED 的接法 ---------------
+ SDA ---> A4
+ SDL ---> A5
+ power ---> 5V
+ GND
+----------------------------------------------
+
+--------------- DTH11 的接法 ---------------
+ power ---> 5V
+ DATA ---> pin2
+ GND
+--------------------------------------------
+
+LCD Refer:
 https://github.com/openenergymonitor/LiquidCrystal_I2C1602V1
 https://www.dfrobot.com/wiki/index.php/I2C/TWI_LCD1602_Module_(SKU:_DFR0063)
+
+DHT11 Refer(lib):
+https://github.com/adafruit/Adafruit_Sensor
+https://github.com/adafruit/DHT-sensor-library
