@@ -1,0 +1,7 @@
+如果要將16x2 LiquidCrystal_I2C的library include進去
+1. 將LiquidCrystal_I2C1602V1.zip解開, uzip xxx.zip
+2. copy LiquidCrystal_I2C1602V1 to .../arduino_IDE_path/libraries 
+
+Refer:
+https://github.com/openenergymonitor/LiquidCrystal_I2C1602V1
+https://www.dfrobot.com/wiki/index.php/I2C/TWI_LCD1602_Module_(SKU:_DFR0063)
